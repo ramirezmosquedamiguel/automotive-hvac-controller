@@ -126,14 +126,6 @@
 #define FAN_PWM_AUTOMATIC  FAN_PWM_HIGH
 
 /* =========================================================
- * Timer1 diagnostic output
- * ========================================================= */
-
-#define TIMER_DEBUG_DDR    DDRD
-#define TIMER_DEBUG_PORT   PORTD
-#define TIMER_DEBUG_PIN    PD7
-
-/* =========================================================
  * Types
  * ========================================================= */
 
@@ -233,9 +225,6 @@ int main(void)
 {
     uint8_t command = 0;
     uint8_t value = 0;
-
-    TIMER_DEBUG_DDR |= (1U << TIMER_DEBUG_PIN);
-    TIMER_DEBUG_PORT &= (uint8_t)~(1U << TIMER_DEBUG_PIN);
 
     lcd_init();
 
@@ -582,8 +571,6 @@ ISR(TIMER1_COMPA_vect)
 {
     static uint16_t lm35_period_counter = 0;
     static uint8_t ui_100ms_counter = 0;
-
-    TIMER_DEBUG_PORT ^= (1U << TIMER_DEBUG_PIN);
 
     if (int1_debounce_ms > 0)
     {

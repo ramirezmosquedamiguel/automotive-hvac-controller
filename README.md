@@ -366,11 +366,9 @@ The firmware was developed in Embedded C for the ATmega328P using AVR-GCC / Micr
 automotive-hvac-controller/
 ├── firmware/
 │   ├── master/
-│   │   ├── main.c
-│   │   └── README.md
+│   │   └── main.c
 │   └── slave/
-│       ├── main.c
-│       └── README.md
+│       └── main.c
 │
 ├── docs/
 │   ├── architecture.md
