@@ -1,42 +1,66 @@
 # Simulation and Validation
 
-This directory will contain the files and evidence used to reproduce the HVAC controller in simulation.
+## Purpose
 
-## Supported tools
+This directory contains the simulation evidence used to validate the automotive HVAC controller before and during physical implementation.
 
-The project has been evaluated with:
+The project was simulated primarily in Proteus to verify the interaction between the two ATmega328P controllers, the user interface, TWI communication, temperature handling, and fan-control logic.
 
-- SimulIDE
+The simulation complements the physical prototype and provides a visual reference for the system architecture and operating modes.
+
+---
+
+## Simulation Environment
+
+The final simulation was developed using:
+
 - Proteus 8
-- Microchip Studio / AVR-GCC firmware builds
+- ATmega328P microcontrollers
+- AVR-GCC / Microchip Studio firmware
+- 4×4 matrix keypad
+- 16×2 LCD
+- LM35 temperature sensor
+- TWI / I²C communication
+- L293D motor driver
+- PWM-controlled DC fan
 
-Simulation files may depend on tool-specific component models and should be kept separate from the portable C source code.
+Both microcontrollers operate at 8 MHz.
 
-## Validation goals
+The TWI bus operates at 100 kHz and uses the slave address `0x08`.
 
-A complete simulation package should demonstrate:
+---
 
-1. Both ATmega328P controllers start correctly.
-2. The LCD presents readable system information.
-3. The keypad changes modes or control values.
-4. Interior and exterior temperature inputs are acquired.
-5. The master addresses the slave over TWI/I²C.
-6. The slave receives commands and updates the PWM output.
-7. Manual and automatic modes produce distinguishable behavior.
-8. Communication failures or invalid readings do not leave the system in an unsafe undefined state.
+## Proteus System Overview
 
-## Recommended evidence
+The following image shows the complete simulated HVAC architecture.
 
-The final repository should include:
+![Proteus system overview](images/proteus-overview.png)
 
-- A full-system schematic screenshot
-- A close-up of the TWI wiring and pull-up resistors
-- LCD output in manual mode
-- LCD output in automatic mode
-- Logic-analyzer or oscilloscope evidence for SDA and SCL, when available
-- PWM waveform or fan-speed evidence
-- Notes describing simulator limitations and hardware differences
+The simulation includes the master and slave controllers, keypad interface, LCD, temperature input, TWI communication, and fan-control stage.
 
-## File handling
+The master handles user input and transmits control commands to the slave.
 
-Binary or proprietary simulation projects should be accompanied by screenshots and a written setup procedure. Generated build outputs such as `.elf`, `.hex`, object files, and temporary simulator files should remain excluded through `.gitignore` unless a release artifact is intentionally published.
+The slave performs temperature acquisition, HVAC control-state evaluation, display management, and PWM fan control.
+
+---
+
+## Manual Mode Simulation
+
+The manual-mode simulation verifies direct user control of the fan level.
+
+![Manual mode simulation](images/manual-overview.png)
+
+Manual mode is selected using the `B` key.
+
+Once manual mode is active, the `D` key cycles through the available fan levels:
+
+```text
+OFF
+ ↓
+LOW
+ ↓
+MEDIUM
+ ↓
+HIGH
+ ↓
+OFF
