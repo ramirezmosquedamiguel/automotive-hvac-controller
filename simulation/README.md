@@ -191,9 +191,10 @@ The simulated design was later implemented as a physical prototype.
 
 The physical implementation was used to confirm that the behavior validated in simulation could also be reproduced using the real microcontrollers, sensor, display, keypad, motor driver, and DC motor.
 
-A manual-mode demonstration is available here:
+Physical prototype demonstrations are available here:
 
-[Manual Mode Prototype Demonstration](../media/prototype/videos/manual-mode.mp4)
+- [Manual Mode Prototype Demonstration](../media/prototype/videos/manual-mode.mp4)
+- [Automatic Mode Prototype Demonstration](../media/prototype/videos/automatic-mode.mp4)
 
 ---
 

@@ -312,10 +312,10 @@ The physical prototype was used to verify the interaction between:
 - Manual mode
 - Automatic control logic
 
-### Demonstration Video
+### Demonstration Videos
 
-[Watch the manual-mode prototype demonstration](media/prototype/videos/manual-mode.mp4)
-
+- [Watch the manual-mode prototype demonstration](media/prototype/videos/manual-mode.mp4)
+- [Watch the automatic-mode prototype demonstration](media/prototype/videos/automatic-mode.mp4)
 ---
 
 ## Firmware
@@ -388,6 +388,7 @@ automotive-hvac-controller/
 │       ├── images/
 │       │   └── final-assembly.jpg
 │       └── videos/
+│           │ automatic-mode.mp4
 │           └── manual-mode.mp4
 │
 ├── .gitignore
