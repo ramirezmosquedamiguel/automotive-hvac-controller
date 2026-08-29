@@ -10,8 +10,6 @@
  * - Select OFF, automatic, and manual operating modes.
  * - Cycle manual fan levels (OFF, LOW, MEDIUM, HIGH).
  * - Transmit two-byte application packets over TWI at 100 kHz.
- * - Report successful or failed TWI transactions through optional
- *   status outputs.
  *
  * TWI application packet:
  *   Byte 0: command
@@ -96,12 +94,6 @@
  * Cuatro muestras estables equivalen a 20 ms.
  */
 #define KEYPAD_DEBOUNCE_SAMPLES  4U
-
-/* =========================================================
- * Optional status indicators
- * ========================================================= */
-
-
 
 /* =========================================================
  * Keypad map
